@@ -1,0 +1,42 @@
+{% extends '/layouts/layouts.html' %}
+
+<!-- Start of 'This block is for the Title' -->
+{% block title %} 
+Appt. Calendar
+{% endblock %}
+<!-- End of 'This block is for the Title' -->
+
+<!-- Start of 'This block is for the Title of the Body' -->
+{% block bodyTitle %}
+Appt. Calendar
+{% endblock %}
+<!-- End of 'This block is for the Title of the Body' -->
+
+
+<!-- Start of 'This block is for the Body' -->
+{% block body %}
+Appt. Calendar Body
+<br>
+<br>
+<form action="/openChromeDriver" method="POST">
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Enter URL</label>
+        <input type="text" class="form-control" id="url" name="url">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Enter Username</label>
+      <input type="text" class="form-control" id="username" name="username">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Password</label>
+      <input type="text" class="form-control" id="password" name="password">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+<!-- <a href="/openChromeDriver">
+    <button type="button" class="btn btn-success">Open Chrome Driver</button>
+</a> -->
+{% endblock %}
+<!-- End of 'This block is for the Body' -->
+
+
