@@ -1,5 +1,5 @@
 from flask import Flask, render_template, url_for, request
-from webapp.seleniumdriver import selenium
+from controller.figuresmatchingdriver import selenium
 
 
 app = Flask(__name__)
@@ -9,10 +9,9 @@ def index():
 
 @app.route('/openChromeDriver', methods=['POST', 'GET'])
 def openChromeDriver():
-    username = request.form['username']
-    urlLogin = request.form['url']
-    password = request.form['password']
-    thisisme = selenium.login(username, urlLogin, password)
+    modules = request.form.getlist('modules[]')
+    metrics = request.form.getlist('metrics[]')
+    thisisme = selenium.login(modules, metrics)
     print(thisisme)
     return render_template('/pages/calendar/apptcalendar.html') 
 
