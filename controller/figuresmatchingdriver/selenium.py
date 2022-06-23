@@ -9,46 +9,37 @@ from selenium.webdriver.support import expected_conditions as EC
 
 def login(modules, metrics):
     driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
-    driver.get('https://solo.next.jarvisanalytics.com/')
+    driver.get('https://mb2.stage.jarvisanalytics.com/')
     
 
     usernameXpath = driver.find_element(By.XPATH, '/html/body/div/div/div/div/div[1]/div/form/div[1]/div/input')
-    usernameXpath.send_keys('testryan')
+    usernameXpath.send_keys('harristestadmin')
     passwordXpath = driver.find_element(By.XPATH, '/html/body/div/div/div/div/div[1]/div/form/div[2]/div[2]/input')
-    passwordXpath.send_keys('Jarvis.123')
+    passwordXpath.send_keys('qa')
     loginButton = driver.find_element(By.XPATH, '/html/body/div/div/div/div/div[1]/div/form/button')
     loginButton.click()
 
     for x in modules:
         print("---"+x)
         for y in metrics:
-            if x == "Calendar":
-                driver.get('https://solo.next.jarvisanalytics.com/calendar/appointments')
+            if x == "Financials":
+                driver.get('https://mb2.stage.jarvisanalytics.com/financial/summary')
                 if y == "Net Production":
-                    try:
-                        element = WebDriverWait(driver, 120).until(
-                            EC.presence_of_element_located((By.XPATH, "/html/body/div[1]/main/div[2]/div/div/div[1]/div/div/div[1]/div/div[2]/h4"))
-                        )
-                    finally:
-                        print("FUCK SHIT")
-                    clickMonth = driver.find_element(By.XPATH, '/html/body/div[1]/main/div[2]/div/div/div[2]/div[1]/ul/li[1]')
-                    clickMonth.click()
-                    print("HELLO")
-                    # calNetProdVal = getcalendarmetricvalue.netProduction(driver)
+                    calNetProdVal = getcalendarmetricvalue.netProduction(driver)
                 if y == "Gross Production":
                     print("Nisulod Siya Sa Financial then ge Print ang Gross Production "+y)
                 if y == "Adjustment":
                     print("Nisulod Siya Sa Financial then ge Print ang Adjustment "+y)
-            if x == "Dashboard":
-                driver.get('https://solo.next.jarvisanalytics.com/solo/results')
+            if x == "Operations":
+                driver.get('https://mb2.stage.jarvisanalytics.com/operations/offices')
                 if y == "Net Production":
                     print("Nisulod Siya Sa Financial then ge Print ang Net Production "+y)
                 if y == "Gross Production":
                     print("Nisulod Siya Sa Financial then ge Print ang Gross Production "+y)
                 if y == "Adjustment":
                     print("Nisulod Siya Sa Financial then ge Print ang Adjustment "+y)
-            if x == "Front Office":
-                driver.get('https://solo.next.jarvisanalytics.com/front-office/schedule')
+            if x == "Dashboard":
+                driver.get('https://mb2.stage.jarvisanalytics.com/dashboard')
                 if y == "Net Production":
                     print("Nisulod Siya Sa Financial then ge Print ang Net Production "+y)
                 if y == "Gross Production":
