@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, request
+from flask import Flask, render_template, url_for, request, redirect
 from controller.figuresmatchingdriver import selenium
 
 
@@ -11,9 +11,16 @@ def index():
 def openChromeDriver():
     modules = request.form.getlist('modules[]')
     metrics = request.form.getlist('metrics[]')
-    thisisme = selenium.login(modules, metrics)
-    print(thisisme)
-    return render_template('/pages/calendar/apptcalendar.html') 
+    # allData = selenium.login(modules, metrics)
+    # print(allData)
+    return redirect(url_for('openModal', modules=modules))
+
+    # return render_template('/pages/calendar/apptcalendar.html', metrics = metrics) 
+
+@app.route('/openModal/<modules>', methods=['POST', 'GET'])
+def openModal(modules):
+    return render_template('/pages/calendar/apptcalendar.html', modules = modules) 
+
 
 
 

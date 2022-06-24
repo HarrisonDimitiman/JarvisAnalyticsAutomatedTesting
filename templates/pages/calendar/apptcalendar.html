@@ -1,5 +1,4 @@
 {% extends '/layouts/layouts.html' %}
-
 <!-- Start of 'This block is for the Title' -->
 {% block title %} 
 Appt. Calendar
@@ -19,7 +18,7 @@ Appt. Calendar
 
 <form action="/openChromeDriver" method="POST">
     <ol class="breadcrumb mb-12">
-      <li class="breadcrumb-item active">Please select atleast one modules!</li>
+      <li class="breadcrumb-item active">Please select atleast one modules! </li>
     </ol>
     <div class="form-check">
       <input class="form-check-input" type="checkbox" id="financials" value="Financials" name="modules[]">
@@ -65,6 +64,31 @@ Appt. Calendar
     <br>
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
+
+
+
+{% if modules is defined and modules|length %}
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Module Name</th>
+      <!-- <th scope="col">Metric</th>
+      <th scope="col">Pass/Fail</th> -->
+    </tr>
+  </thead>
+  <tbody>
+    {% for module in modules %}
+    <tr>
+      <th scope="row">1</th>
+      <td>{{module|safe}}</td>
+      <!-- <td>Otto</td>
+      <td>@mdo</td> -->
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endif %}
 <!-- <a href="/openChromeDriver">
     <button type="button" class="btn btn-success">Open Chrome Driver</button>
 </a> -->
