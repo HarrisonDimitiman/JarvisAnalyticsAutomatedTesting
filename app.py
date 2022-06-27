@@ -11,15 +11,15 @@ def index():
 def openChromeDriver():
     modules = request.form.getlist('modules[]')
     metrics = request.form.getlist('metrics[]')
-    # allData = selenium.login(modules, metrics)
+    allData = selenium.login(modules, metrics)
     # print(allData)
-    return redirect(url_for('openModal', modules=modules))
+    # return redirect(url_for('apptCalendar', allData=allData))
 
-    # return render_template('/pages/calendar/apptcalendar.html', metrics = metrics) 
+    return render_template('/pages/calendar/apptcalendar.html', allData=allData) 
 
-@app.route('/openModal/<modules>', methods=['POST', 'GET'])
-def openModal(modules):
-    return render_template('/pages/calendar/apptcalendar.html', modules = modules) 
+# @app.route('/openModal/<modules>', methods=['POST', 'GET'])
+# def openModal(modules):
+#     return render_template('/pages/calendar/apptcalendar.html', modules = modules) 
 
 
 

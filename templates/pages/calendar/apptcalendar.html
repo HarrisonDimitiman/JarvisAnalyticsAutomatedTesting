@@ -67,21 +67,19 @@ Appt. Calendar
 
 
 
-{% if modules is defined and modules|length %}
+{% if allData is defined and allData|length %}
 <table class="table">
   <thead>
     <tr>
-      <th scope="col">#</th>
       <th scope="col">Module Name</th>
       <!-- <th scope="col">Metric</th>
       <th scope="col">Pass/Fail</th> -->
     </tr>
   </thead>
   <tbody>
-    {% for module in modules %}
+    {% for data in allData %}
     <tr>
-      <th scope="row">1</th>
-      <td>{{module|safe}}</td>
+      <td>{{data|safe}}</td>
       <!-- <td>Otto</td>
       <td>@mdo</td> -->
     </tr>
